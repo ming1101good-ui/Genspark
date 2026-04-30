@@ -1,27 +1,35 @@
-// 生成预览二维码（无需提交审核，扫码即可查看）
+// 生成体验版二维码（不上传，仅预览）
 const ci = require('miniprogram-ci');
 const path = require('path');
+const fs = require('fs');
 
 const APPID = 'wx0537c638f83f3275';
+const PROJECT_PATH = path.resolve(__dirname, '..');
+const KEY_PATH = path.resolve(__dirname, 'private.key');
 
 (async () => {
+  if (!fs.existsSync(KEY_PATH)) {
+    console.error('❌ 未找到 scripts/private.key，请先准备密钥');
+    process.exit(1);
+  }
   const project = new ci.Project({
     appid: APPID,
     type: 'miniProgram',
-    projectPath: path.resolve(__dirname, '..'),
-    privateKeyPath: path.resolve(__dirname, '../private.key'),
-    ignores: ['node_modules/**/*', 'scripts/**/*', 'private.key', '.git/**/*']
+    projectPath: PROJECT_PATH,
+    privateKeyPath: KEY_PATH,
+    ignores: ['node_modules/**/*', 'scripts/**/*', '.git/**/*']
   });
 
-  const previewResult = await ci.preview({
+  const qrPath = path.resolve(__dirname, 'preview.jpg');
+  await ci.preview({
     project,
-    desc: '峡谷开黑助手 预览',
-    setting: { es6: true, es7: true, minify: true },
+    desc: 'preview',
+    setting: { es6: true, minify: true },
     qrcodeFormat: 'image',
-    qrcodeOutputDest: path.resolve(__dirname, '../preview-qr.jpg'),
-    pagePath: 'pages/index/index'
+    qrcodeOutputDest: qrPath,
+    onProgressUpdate: (info) => info && info.message && console.log(' ›', info.message)
   });
 
-  console.log('✅ 预览二维码已生成：preview-qr.jpg');
-  console.log('用微信扫描即可在手机上预览（无需安装小程序）');
+  console.log('✅ 体验版二维码已生成：', qrPath);
+  console.log('用微信扫码即可在手机上预览');
 })().catch(e => { console.error(e); process.exit(1); });

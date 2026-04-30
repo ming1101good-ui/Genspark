@@ -1,0 +1,17 @@
+.hero-bg { padding: 32rpx 24rpx; background: linear-gradient(135deg,#1a2547,#2a3a6b); }
+.title { color: #fff; font-size: 38rpx; font-weight: bold; }
+.bd-stat { color: #ffd66e; font-size: 26rpx; margin-right: 24rpx; }
+
+.lineup { display: flex; justify-content: space-between; margin-top: 12rpx; }
+.lp-cell { display: flex; flex-direction: column; align-items: center; flex: 1; }
+.lp-icon { width: 110rpx; height: 110rpx; border-radius: 18rpx; }
+.lp-name { color: #fff; font-size: 24rpx; margin-top: 8rpx; }
+.lp-role { color: #8a93a6; font-size: 22rpx; }
+
+.li-row { display: flex; align-items: flex-start; padding: 8rpx 0; }
+.li-dot { width: 36rpx; font-size: 28rpx; flex-shrink: 0; }
+.li-text { color: #cdd5e3; font-size: 26rpx; flex: 1; line-height: 1.6; }
+
+.action-row { display: flex; margin-top: 20rpx; }
+.action-btn { flex: 1; text-align: center; padding: 24rpx 0; border-radius: 16rpx; background: rgba(255,255,255,0.06); color: #cdd5e3; font-size: 28rpx; margin: 0 8rpx; }
+.action-btn.primary { background: linear-gradient(135deg, #ffd66e 0%, #f6a23a 100%); color: #0b1530; font-weight: bold; }

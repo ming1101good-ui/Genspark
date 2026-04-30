@@ -1,0 +1,58 @@
+<view class="page" wx:if="{{info}}">
+  <view class="hero-bg">
+    <view class="row between">
+      <view class="title">{{info.name}}</view>
+      <text class="tag {{info.level==='T0'?'tag-red':'tag-blue'}}">{{info.level}}</text>
+    </view>
+    <view class="row" style="margin-top:14rpx;">
+      <text class="bd-stat">胜率 {{info.winRate}}%</text>
+      <text class="bd-stat">使用率 {{info.useRate}}%</text>
+    </view>
+  </view>
+
+  <view class="container">
+    <view class="card">
+      <view class="card-title">阵容组合</view>
+      <view class="lineup">
+        <view wx:for="{{info.heroes}}" wx:key="name" class="lp-cell" data-name="{{item.name}}" bindtap="goHero">
+          <view class="lp-icon placeholder-img"></view>
+          <text class="lp-name">{{item.name}}</text>
+          <text class="lp-role">{{item.role}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="card">
+      <view class="card-title">套路解析</view>
+      <view class="card-sub" style="line-height:1.8;">{{info.summary}}</view>
+    </view>
+
+    <view class="card">
+      <view class="card-title">阵容优势</view>
+      <view wx:for="{{info.strengths}}" wx:key="*this" class="li-row">
+        <text class="li-dot" style="color:#5fd9a7;">✓</text>
+        <text class="li-text">{{item}}</text>
+      </view>
+    </view>
+
+    <view class="card">
+      <view class="card-title">弱势 / 注意</view>
+      <view wx:for="{{info.weaknesses}}" wx:key="*this" class="li-row">
+        <text class="li-dot" style="color:#ff6b6b;">✗</text>
+        <text class="li-text">{{item}}</text>
+      </view>
+    </view>
+
+    <view class="card">
+      <view class="card-title">克制阵容</view>
+      <view class="row" style="flex-wrap:wrap;margin-top:8rpx;">
+        <text wx:for="{{info.counter}}" wx:key="*this" class="tag tag-red">{{item}}</text>
+      </view>
+    </view>
+
+    <view class="action-row">
+      <view class="action-btn" bindtap="goLineup">阵容深度分析 ›</view>
+      <view class="action-btn primary" bindtap="goTutorial">实战教学 ({{info.videoCount}}个)</view>
+    </view>
+  </view>
+</view>

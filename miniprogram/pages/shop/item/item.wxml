@@ -1,0 +1,41 @@
+<view class="page" wx:if="{{info}}">
+  <view class="header">
+    <view class="big-icon placeholder-img"></view>
+    <view class="info">
+      <view class="i-name">{{info.name}}</view>
+      <view class="row" style="margin-top:8rpx;">
+        <text class="tag">{{info.cat}}</text>
+        <text class="tag" style="background:rgba(255,214,110,.15);color:#ffd66e;">💰 {{info.price}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="container">
+    <view class="card">
+      <view class="card-title">基础属性</view>
+      <view wx:for="{{info.attrs}}" wx:key="k" class="attr-row">
+        <text class="ak">{{item.k}}</text>
+        <text class="av">{{item.v}}</text>
+      </view>
+    </view>
+
+    <view class="card" wx:if="{{info.passive}}">
+      <view class="card-title">被动 · {{info.passive.name}}</view>
+      <view class="card-sub" style="line-height:1.8;">{{info.passive.desc}}</view>
+    </view>
+
+    <view class="card">
+      <view class="card-title">合成树</view>
+      <view wx:for="{{info.syntheticTree}}" wx:key="*this" class="tree">{{item}}</view>
+    </view>
+
+    <view class="card">
+      <view class="card-title">推荐英雄</view>
+      <view class="row" style="flex-wrap:wrap;margin-top:8rpx;">
+        <text wx:for="{{info.recHeroes}}" wx:key="*this" class="tag">{{item}}</text>
+      </view>
+    </view>
+
+    <view class="tips">💡 {{info.tips}}</view>
+  </view>
+</view>

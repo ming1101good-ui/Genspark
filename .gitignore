@@ -1,0 +1,7 @@
+node_modules/
+private.key
+*.log
+.DS_Store
+preview-qr.jpg
+.vscode/
+miniprogram_npm/

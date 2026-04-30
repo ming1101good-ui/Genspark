@@ -1,0 +1,13 @@
+<view class="page container">
+  <view class="header-name">{{heroName}} · 单杀精彩集锦</view>
+  <view class="grid">
+    <view wx:for="{{videos}}" wx:key="id" class="grid-item" data-id="{{item.id}}" bindtap="goVideo">
+      <view class="g-thumb placeholder-img">
+        <text class="video-duration">{{item.duration}}</text>
+        <view class="video-play">▶</view>
+      </view>
+      <view class="g-title">{{item.title}}</view>
+      <view class="g-views">▶ {{item.viewsText}}</view>
+    </view>
+  </view>
+</view>

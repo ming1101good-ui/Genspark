@@ -1,0 +1,30 @@
+<view class="page">
+  <view class="banner-tip">
+    🔥 每日更新 · AI 解析 B 站热门视频自动生成阵容套路，胜率参考玩家实战数据
+  </view>
+  <view class="tabs">
+    <view class="tab {{tab==='all'?'active':''}}" data-tab="all" bindtap="switchTab">全部</view>
+    <view class="tab {{tab==='t0'?'active':''}}" data-tab="t0" bindtap="switchTab">T0级</view>
+    <view class="tab {{tab==='t1'?'active':''}}" data-tab="t1" bindtap="switchTab">T1级</view>
+    <view class="tab {{tab==='gimmick'?'active':''}}" data-tab="gimmick" bindtap="switchTab">娱乐</view>
+  </view>
+
+  <view class="container">
+    <view wx:for="{{squads}}" wx:key="id" class="squad-card" data-id="{{item.id}}" bindtap="goSquad">
+      <view class="row between">
+        <view class="card-title">{{item.name}}</view>
+        <text class="tag {{item.level==='T0'?'tag-red':(item.level==='T1'?'tag-blue':(item.level==='娱乐'?'tag-green':''))}}">{{item.level}}</text>
+      </view>
+      <view class="hero-line">
+        <view wx:for="{{item.heroes}}" wx:for-item="h" wx:key="*this" class="h-cell">
+          <view class="h-icon placeholder-img"></view>
+          <text class="h-name">{{h}}</text>
+        </view>
+      </view>
+      <view class="row between bottom-row">
+        <text class="rate">胜率 {{item.winRate}}%</text>
+        <text class="more">查看详情 ›</text>
+      </view>
+    </view>
+  </view>
+</view>

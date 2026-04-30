@@ -1,0 +1,40 @@
+<view class="page container" wx:if="{{info}}">
+  <view class="card">
+    <view class="card-title">{{info.name}}</view>
+    <view class="card-sub" style="line-height:1.8;">{{info.summary}}</view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">铭文配置</view>
+    <view wx:for="{{info.runes}}" wx:key="name" class="rune-cell">
+      <view class="rc-icon placeholder-img"></view>
+      <view style="flex:1;">
+        <view class="rc-name">{{item.name}}</view>
+        <view class="rc-detail">{{item.detail}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">总属性加成</view>
+    <view wx:for="{{info.totalAttrs}}" wx:key="k" class="attr-row">
+      <text class="ak">{{item.k}}</text>
+      <text class="av">{{item.v}}</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">适用英雄</view>
+    <view class="card-sub">{{info.applyTo}}</view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">出装搭配</view>
+    <view class="card-sub" style="line-height:1.8;">{{info.buildTips}}</view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">克制场景</view>
+    <view class="card-sub" style="line-height:1.8;">{{info.counter}}</view>
+  </view>
+</view>

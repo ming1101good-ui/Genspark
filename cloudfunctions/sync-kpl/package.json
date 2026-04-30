@@ -1,0 +1,11 @@
+{
+  "name": "sync-kpl",
+  "version": "1.0.0",
+  "description": "同步KPL赛事数据",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3",
+    "axios": "^1.6.0",
+    "iconv-lite": "^0.6.3"
+  }
+}

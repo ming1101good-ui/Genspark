@@ -1,0 +1,10 @@
+{
+  "name": "sync-master",
+  "version": "1.0.0",
+  "description": "总调度+健康检查+自动修复+多渠道告警",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3",
+    "axios": "^1.6.0"
+  }
+}

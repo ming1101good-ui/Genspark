@@ -1,0 +1,7 @@
+{
+  "permissions": { "openapi": [] },
+  "triggers": [
+    { "name": "masterDaily", "type": "timer", "config": "0 0 4 * * * *" },
+    { "name": "masterMatchDay", "type": "timer", "config": "0 0 22 * * * *" }
+  ]
+}

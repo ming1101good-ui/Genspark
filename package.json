@@ -1,0 +1,12 @@
+{
+  "name": "xiagu-kaihei-helper",
+  "version": "1.0.0",
+  "description": "峡谷开黑助手 - 王者荣耀玩家社区微信小程序",
+  "scripts": {
+    "upload": "node scripts/upload.js",
+    "preview": "node scripts/preview.js"
+  },
+  "devDependencies": {
+    "miniprogram-ci": "^1.9.11"
+  }
+}

@@ -1,0 +1,27 @@
+<view class="page container" wx:if="{{detail}}">
+  <view class="card">
+    <view class="card-title">第{{game}}局 · 关键数据</view>
+    <view class="data-row"><text>对局时长</text><text class="val">{{detail.duration}}</text></view>
+    <view class="data-row"><text>击杀比</text><text class="val">{{detail.kills}}</text></view>
+    <view class="data-row"><text>经济差</text><text class="val">{{detail.gold}}</text></view>
+    <view class="data-row"><text>一血</text><text class="val">{{detail.firstBlood}}</text></view>
+    <view class="data-row"><text>一塔</text><text class="val">{{detail.firstTower}}</text></view>
+    <view class="data-row"><text>首条暴君</text><text class="val">{{detail.firstDragon}}</text></view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">关键节点</view>
+    <view wx:for="{{detail.objectives}}" wx:key="time" class="timeline">
+      <view class="timeline-dot"></view>
+      <view class="timeline-content">
+        <text class="t-time">{{item.time}}</text>
+        <text class="t-desc">{{item.desc}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">战术分析</view>
+    <view class="card-sub" style="line-height:1.8;">{{detail.analysis}}</view>
+  </view>
+</view>

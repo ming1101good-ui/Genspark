@@ -1,0 +1,13 @@
+<view class="page container">
+  <view wx:for="{{videos}}" wx:key="id" class="video-list-card" data-id="{{item.id}}" bindtap="goVideo">
+    <view class="vlc-thumb placeholder-img">
+      <text class="video-duration">{{item.duration}}</text>
+      <view class="video-play">▶</view>
+    </view>
+    <view class="vlc-body">
+      <view class="vlc-title">{{item.title}}</view>
+      <view class="vlc-author">{{item.author}}</view>
+      <view class="vlc-views">▶ {{item.viewsText}}</view>
+    </view>
+  </view>
+</view>

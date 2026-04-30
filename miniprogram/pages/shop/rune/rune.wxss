@@ -1,0 +1,16 @@
+.header { display: flex; padding: 32rpx 24rpx; align-items: center; }
+.r-红色 { background: linear-gradient(135deg, rgba(255,107,107,0.4), #2a3a6b); }
+.r-蓝色 { background: linear-gradient(135deg, rgba(94,170,255,0.4), #2a3a6b); }
+.r-绿色 { background: linear-gradient(135deg, rgba(95,217,167,0.4), #2a3a6b); }
+.big-icon { width: 160rpx; height: 160rpx; border-radius: 20rpx; margin-right: 24rpx; background: rgba(0,0,0,0.3); }
+.info { flex: 1; }
+.i-name { color: #fff; font-size: 38rpx; font-weight: bold; }
+
+.attr-row { display: flex; justify-content: space-between; padding: 12rpx 0; border-bottom: 1rpx solid rgba(255,255,255,0.06); }
+.attr-row:last-child { border: 0; }
+.ak { color: #cdd5e3; font-size: 26rpx; }
+.av { color: #ffd66e; font-size: 26rpx; font-weight: bold; }
+
+.set-row { display: flex; align-items: center; padding: 12rpx 0; }
+.set-num { width: 80rpx; color: #ffd66e; font-size: 26rpx; font-weight: bold; }
+.set-eff { color: #cdd5e3; font-size: 26rpx; }

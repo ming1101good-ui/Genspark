@@ -1,0 +1,12 @@
+.player-wrap { width: 100%; background: #000; }
+.player { width: 100%; height: 422rpx; }
+.title { color: #fff; font-size: 32rpx; font-weight: bold; line-height: 1.5; }
+.meta-row { margin-top: 14rpx; color: #8a93a6; font-size: 24rpx; }
+.m-dot { margin: 0 12rpx; }
+.stats { margin-top: 14rpx; }
+.stat { color: #5eaaff; font-size: 24rpx; margin-right: 28rpx; }
+.copy-bv { margin-top: 18rpx; padding: 16rpx 24rpx; background: rgba(94,170,255,0.1); color: #5eaaff; font-size: 26rpx; border-radius: 12rpx; text-align: center; }
+
+.related-card { display: flex; align-items: center; background: rgba(255,255,255,0.05); border-radius: 16rpx; padding: 16rpx; margin-bottom: 14rpx; }
+.r-thumb { width: 200rpx; height: 120rpx; border-radius: 12rpx; margin-right: 18rpx; position: relative; }
+.r-title { flex: 1; color: #fff; font-size: 26rpx; line-height: 1.5; display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden; }

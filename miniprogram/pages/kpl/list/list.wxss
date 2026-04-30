@@ -1,0 +1,35 @@
+.season { padding: 24rpx; color: #ffd66e; font-size: 32rpx; font-weight: bold; }
+.tabs { display: flex; padding: 0 24rpx; border-bottom: 1rpx solid rgba(255,255,255,0.06); }
+.tab { padding: 20rpx 24rpx; color: #8a93a6; font-size: 28rpx; position: relative; margin-right: 16rpx; }
+.tab.active { color: #ffd66e; font-weight: bold; }
+.tab.active::after { content: ''; position: absolute; left: 24rpx; right: 24rpx; bottom: 0; height: 4rpx; background: #ffd66e; border-radius: 2rpx; }
+
+.match-card {
+  background: rgba(255,255,255,0.05); border-radius: 20rpx; padding: 24rpx;
+  margin-bottom: 16rpx; border: 1rpx solid rgba(255,214,110,0.08);
+}
+.match-stage { font-size: 24rpx; color: #8a93a6; margin-bottom: 16rpx; }
+.match-body { display: flex; align-items: center; justify-content: space-between; }
+.match-team { display: flex; flex-direction: column; align-items: center; flex: 1; }
+.team-logo { width: 96rpx; height: 96rpx; border-radius: 50%; margin-bottom: 8rpx; }
+.team-name { font-size: 26rpx; color: #fff; }
+.match-vs { display: flex; flex-direction: column; align-items: center; padding: 0 16rpx; }
+.match-vs-text { color: #ffd66e; font-size: 32rpx; font-weight: bold; }
+.match-score { color: #ffd66e; font-size: 36rpx; font-weight: bold; }
+.match-status { color: #8a93a6; font-size: 22rpx; margin-top: 8rpx; }
+
+.rank-head { padding: 16rpx 24rpx; color: #8a93a6; font-size: 24rpx; background: rgba(255,255,255,0.04); border-radius: 16rpx; margin-bottom: 12rpx; }
+.rank-row { padding: 24rpx; background: rgba(255,255,255,0.04); border-radius: 16rpx; margin-bottom: 12rpx; font-size: 28rpx; }
+.rank-num { color: #8a93a6; font-weight: bold; }
+.rank-num.top { color: #ffd66e; }
+
+.team-card { display: flex; align-items: center; background: rgba(255,255,255,0.05); border-radius: 20rpx; padding: 24rpx; margin-bottom: 16rpx; }
+.team-logo-big { width: 112rpx; height: 112rpx; border-radius: 50%; margin-right: 20rpx; }
+.team-card-name { color: #fff; font-size: 30rpx; font-weight: bold; }
+.team-card-area { color: #8a93a6; font-size: 24rpx; margin-top: 6rpx; }
+.team-card-record { margin-top: 10rpx; }
+.arrow { color: #8a93a6; font-size: 36rpx; }
+
+.news-card { background: rgba(255,255,255,0.05); border-radius: 16rpx; padding: 24rpx; margin-bottom: 12rpx; }
+.news-title { color: #fff; font-size: 28rpx; line-height: 1.5; }
+.news-date { color: #8a93a6; font-size: 22rpx; margin-top: 10rpx; }

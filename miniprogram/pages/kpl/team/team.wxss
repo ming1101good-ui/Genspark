@@ -1,0 +1,22 @@
+.header { display: flex; padding: 32rpx 24rpx; background: linear-gradient(135deg,#1a2547,#2a3a6b); }
+.logo { width: 144rpx; height: 144rpx; border-radius: 50%; margin-right: 24rpx; }
+.info { flex: 1; }
+.name { color: #fff; font-size: 36rpx; font-weight: bold; }
+.meta { color: #8a93a6; font-size: 24rpx; margin-top: 8rpx; }
+
+.tabs { display: flex; padding: 0 24rpx; border-bottom: 1rpx solid rgba(255,255,255,0.06); }
+.tab { padding: 20rpx 24rpx; color: #8a93a6; font-size: 28rpx; position: relative; margin-right: 16rpx; }
+.tab.active { color: #ffd66e; font-weight: bold; }
+.tab.active::after { content: ''; position: absolute; left: 24rpx; right: 24rpx; bottom: 0; height: 4rpx; background: #ffd66e; border-radius: 2rpx; }
+
+.player-card { display: flex; align-items: center; background: rgba(255,255,255,0.05); border-radius: 20rpx; padding: 24rpx; margin-bottom: 16rpx; }
+.avatar { width: 96rpx; height: 96rpx; border-radius: 50%; margin-right: 20rpx; }
+.p-name { color: #fff; font-size: 30rpx; font-weight: bold; }
+.p-role { color: #8a93a6; font-size: 24rpx; margin-top: 4rpx; }
+
+.match-row { display: flex; align-items: center; background: rgba(255,255,255,0.05); border-radius: 16rpx; padding: 24rpx; margin-bottom: 12rpx; }
+.date { width: 110rpx; color: #8a93a6; font-size: 24rpx; }
+.vs { flex: 1; color: #fff; font-size: 28rpx; }
+.result { font-size: 30rpx; font-weight: bold; }
+.result.win { color: #5fd9a7; }
+.result.lose { color: #ff6b6b; }

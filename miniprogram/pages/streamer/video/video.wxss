@@ -1,0 +1,5 @@
+.grid { display: flex; flex-wrap: wrap; justify-content: space-between; }
+.grid-item { width: 336rpx; margin-bottom: 24rpx; }
+.g-thumb { width: 100%; height: 200rpx; border-radius: 12rpx; position: relative; }
+.g-title { color: #fff; font-size: 26rpx; margin-top: 10rpx; line-height: 1.4; display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden; }
+.g-views { color: #5eaaff; font-size: 22rpx; margin-top: 4rpx; }

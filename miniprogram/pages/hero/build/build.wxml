@@ -1,0 +1,22 @@
+<view class="page container">
+  <view class="header-name">{{heroName}} · 出装推荐</view>
+  <view wx:for="{{builds}}" wx:key="id" class="build-card">
+    <view class="row between">
+      <text class="bc-name">{{item.name}}</text>
+      <text class="tag {{item.level==='T0'?'tag-red':(item.level==='T1'?'tag-blue':'')}}">{{item.level}}</text>
+    </view>
+    <view class="row" style="margin-top:8rpx;">
+      <text class="bc-stat">胜率 {{item.winRate}}%</text>
+      <text class="bc-stat">使用 {{item.useRate}}%</text>
+    </view>
+    <view class="items">
+      <view wx:for="{{item.items}}" wx:for-item="it" wx:key="name" class="item-cell" data-name="{{it.name}}" bindtap="goItem">
+        <view class="item-icon placeholder-img"></view>
+        <text class="item-name">{{it.name}}</text>
+      </view>
+    </view>
+    <view class="info-line"><text class="il-key">技能加点：</text><text class="il-val">{{item.skillOrder}}</text></view>
+    <view class="info-line"><text class="il-key">召唤师技能：</text><text class="il-val">{{item.summoner}}</text></view>
+    <view class="tips">💡 {{item.tips}}</view>
+  </view>
+</view>

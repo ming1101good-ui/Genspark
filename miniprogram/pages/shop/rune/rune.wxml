@@ -1,0 +1,40 @@
+<view class="page" wx:if="{{info}}">
+  <view class="header r-{{info.color}}">
+    <view class="big-icon placeholder-img"></view>
+    <view class="info">
+      <view class="i-name">{{info.name}}</view>
+      <view class="row" style="margin-top:8rpx;">
+        <text class="tag {{info.color==='红色'?'tag-red':(info.color==='蓝色'?'tag-blue':'tag-green')}}">{{info.color}}铭文</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="container">
+    <view class="card">
+      <view class="card-title">基础属性</view>
+      <view wx:for="{{info.attrs}}" wx:key="k" class="attr-row">
+        <text class="ak">{{item.k}}</text>
+        <text class="av">{{item.v}}</text>
+      </view>
+    </view>
+
+    <view class="card">
+      <view class="card-title">套装效果</view>
+      <view class="set-row"><text class="set-num">2件</text><text class="set-eff">{{info.set2}}</text></view>
+      <view class="set-row"><text class="set-num">5件</text><text class="set-eff">{{info.set5}}</text></view>
+      <view class="set-row"><text class="set-num">10件</text><text class="set-eff">{{info.set10}}</text></view>
+    </view>
+
+    <view class="card">
+      <view class="card-title">推荐英雄</view>
+      <view class="row" style="flex-wrap:wrap;margin-top:8rpx;">
+        <text wx:for="{{info.recHeroes}}" wx:key="*this" class="tag">{{item}}</text>
+      </view>
+    </view>
+
+    <view class="card">
+      <view class="card-title">深度解析</view>
+      <view class="card-sub" style="line-height:1.8;">{{info.analysis}}</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,79 @@
+<view class="page" wx:if="{{info}}">
+  <view class="hero-bg">
+    <view class="stage">{{info.stage}}</view>
+    <view class="date">{{info.date}} · {{info.status}}</view>
+    <view class="vs-wrap">
+      <view class="vs-team">
+        <view class="vs-logo placeholder-img"></view>
+        <view class="vs-name">{{info.teamA}}</view>
+      </view>
+      <view class="vs-score">{{info.score}}</view>
+      <view class="vs-team">
+        <view class="vs-logo placeholder-img"></view>
+        <view class="vs-name">{{info.teamB}}</view>
+      </view>
+    </view>
+    <view class="mvp" bindtap="goPlayer" wx:if="{{info.mvp}}">
+      🏆 MVP: {{info.mvp}} ({{info.mvpHero}})
+    </view>
+  </view>
+
+  <view class="tabs">
+    <view class="tab {{tab==='overview'?'active':''}}" data-tab="overview" bindtap="switchTab">小局</view>
+    <view class="tab {{tab==='bp'?'active':''}}" data-tab="bp" bindtap="switchTab">BP</view>
+    <view class="tab {{tab==='data'?'active':''}}" data-tab="data" bindtap="switchTab">复盘</view>
+  </view>
+
+  <block wx:if="{{tab==='overview'}}">
+    <view class="container">
+      <view wx:for="{{games}}" wx:key="idx" class="game-card" data-idx="{{item.idx}}" bindtap="goReplay">
+        <view class="between">
+          <text class="game-idx">第{{item.idx}}局</text>
+          <text class="tag {{item.win===info.teamA?'tag-green':'tag-red'}}">{{item.win}} 获胜</text>
+        </view>
+        <view class="row" style="margin-top:14rpx;">
+          <text class="game-stat">⏱ {{item.duration}}</text>
+          <text class="game-stat">⚔️ {{item.kills}}</text>
+          <text class="game-stat">🏅 {{item.mvp}}</text>
+        </view>
+        <view class="row" style="margin-top:12rpx;">
+          <text class="link">查看详细复盘 ›</text>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <block wx:if="{{tab==='bp'}}">
+    <view class="container">
+      <view wx:for="{{bp}}" wx:key="team" class="card">
+        <view class="card-title">{{item.team}}</view>
+        <view class="card-sub">禁用</view>
+        <view class="row" style="flex-wrap:wrap;margin-top:6rpx;">
+          <text wx:for="{{item.ban}}" wx:for-item="b" wx:key="*this" class="tag tag-red">{{b}}</text>
+        </view>
+        <view class="card-sub" style="margin-top:14rpx;">选用</view>
+        <view class="row" style="flex-wrap:wrap;margin-top:6rpx;">
+          <text wx:for="{{item.pick}}" wx:for-item="p" wx:key="*this" class="tag tag-blue">{{p}}</text>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <block wx:if="{{tab==='data'}}">
+    <view class="container">
+      <view class="card">
+        <view class="card-title">数据复盘</view>
+        <view class="card-sub" style="line-height:1.8;">
+          AG超玩会本场打野节奏极佳，前期通过澜的强势期建立优势。第二局eStar通过镜的入侵打野追平比分，但后续两局AG调整运营节奏，依靠虞姬+蔡文姬体系稳健获胜。
+        </view>
+      </view>
+      <view class="card">
+        <view class="card-title">关键数据对比</view>
+        <view class="data-row"><text>场均经济</text><text class="val">62.8K vs 58.2K</text></view>
+        <view class="data-row"><text>场均团战胜率</text><text class="val">71% vs 49%</text></view>
+        <view class="data-row"><text>场均小龙</text><text class="val">2.3 vs 1.5</text></view>
+        <view class="data-row"><text>视野得分</text><text class="val">88 vs 76</text></view>
+      </view>
+    </view>
+  </block>
+</view>

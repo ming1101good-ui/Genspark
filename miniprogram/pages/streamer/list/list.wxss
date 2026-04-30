@@ -1,0 +1,17 @@
+.streamer-card { width: 160rpx; display: inline-block; margin-right: 20rpx; vertical-align: top; text-align: center; }
+.streamer-card .avatar { width: 144rpx; height: 144rpx; border-radius: 50%; margin: 0 auto; }
+.s-name { color: #fff; font-size: 26rpx; margin-top: 10rpx; }
+.s-platform { color: #ffd66e; font-size: 22rpx; }
+
+.tabs { display: flex; padding: 0 24rpx; border-bottom: 1rpx solid rgba(255,255,255,0.06); }
+.tab { padding: 20rpx 24rpx; color: #8a93a6; font-size: 28rpx; position: relative; margin-right: 16rpx; }
+.tab.active { color: #ffd66e; font-weight: bold; }
+.tab.active::after { content: ''; position: absolute; left: 24rpx; right: 24rpx; bottom: 0; height: 4rpx; background: #ffd66e; border-radius: 2rpx; }
+
+.video-list-card { background: rgba(255,255,255,0.05); border-radius: 20rpx; margin-bottom: 20rpx; overflow: hidden; }
+.vlc-thumb { width: 100%; height: 380rpx; border-radius: 16rpx 16rpx 0 0; position: relative; }
+.vlc-body { padding: 20rpx; }
+.vlc-title { color: #fff; font-size: 28rpx; line-height: 1.5; }
+.vlc-author { color: #8a93a6; font-size: 24rpx; margin-top: 10rpx; }
+.vlc-views { color: #5eaaff; font-size: 22rpx; margin-top: 6rpx; }
+.empty { color: #8a93a6; font-size: 26rpx; text-align: center; padding: 60rpx 0; }

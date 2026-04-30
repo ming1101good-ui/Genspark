@@ -1,0 +1,47 @@
+<view class="page" wx:if="{{info}}">
+  <view class="header">
+    <view class="logo placeholder-img"></view>
+    <view class="info">
+      <view class="name">{{info.name}}</view>
+      <view class="meta">{{info.area}} · 教练：{{info.coach}}</view>
+      <view class="row" style="margin-top:12rpx;">
+        <text class="tag">第{{info.rank}}名</text>
+        <text class="tag tag-green">{{info.win}}胜</text>
+        <text class="tag tag-red">{{info.lose}}负</text>
+        <text class="tag tag-blue">{{info.championships}}冠</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="tabs">
+    <view class="tab {{tab==='players'?'active':''}}" data-tab="players" bindtap="switchTab">阵容</view>
+    <view class="tab {{tab==='matches'?'active':''}}" data-tab="matches" bindtap="switchTab">近期比赛</view>
+  </view>
+
+  <block wx:if="{{tab==='players'}}">
+    <view class="container">
+      <view wx:for="{{players}}" wx:key="id" class="player-card" data-id="{{item.id}}" bindtap="goPlayer">
+        <view class="avatar placeholder-img"></view>
+        <view style="flex:1;">
+          <view class="p-name">{{item.name}}</view>
+          <view class="p-role">{{item.role}}</view>
+          <view class="row" style="margin-top:8rpx;">
+            <text class="tag tag-blue">KDA {{item.kda}}</text>
+            <text class="tag">MVP×{{item.mvp}}</text>
+          </view>
+        </view>
+        <text style="color:#8a93a6;">›</text>
+      </view>
+    </view>
+  </block>
+
+  <block wx:if="{{tab==='matches'}}">
+    <view class="container">
+      <view wx:for="{{recentMatches}}" wx:key="id" class="match-row" data-id="{{item.id}}" bindtap="goMatch">
+        <text class="date">{{item.date}}</text>
+        <text class="vs">vs {{item.vs}}</text>
+        <text class="result {{item.win?'win':'lose'}}">{{item.result}}</text>
+      </view>
+    </view>
+  </block>
+</view>

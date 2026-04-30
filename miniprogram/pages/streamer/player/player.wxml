@@ -1,0 +1,38 @@
+<view class="page" wx:if="{{info}}">
+  <view class="player-wrap">
+    <video wx:if="{{info.videoUrl}}" class="player" src="{{info.videoUrl}}" controls show-fullscreen-btn show-play-btn />
+    <view wx:else class="player placeholder-img" style="display:flex;align-items:center;justify-content:center;color:#8a93a6;">
+      <text>{{info.platform}}视频，BV号：{{info.bvid}}</text>
+    </view>
+  </view>
+
+  <view class="container">
+    <view class="title">{{info.title}}</view>
+    <view class="row meta-row">
+      <text class="m-author">{{info.author}}</text>
+      <text class="m-dot">·</text>
+      <text class="m-platform">{{info.platform}}</text>
+      <text class="m-dot">·</text>
+      <text class="m-date">{{info.publishDate}}</text>
+    </view>
+    <view class="row stats">
+      <text class="stat">▶ {{info.views}}</text>
+      <text class="stat">❤️ {{info.likes}}</text>
+      <text class="stat">⏱ {{info.duration}}</text>
+    </view>
+    <view wx:if="{{info.bvid}}" class="copy-bv" bindtap="copyBV">复制 BV 号到 B 站观看完整版</view>
+
+    <view class="card" style="margin-top:24rpx;">
+      <view class="card-title">视频简介</view>
+      <view class="card-sub" style="line-height:1.8;">{{info.desc}}</view>
+    </view>
+
+    <view class="section-title" style="margin-top:24rpx;">相关推荐</view>
+    <view wx:for="{{related}}" wx:key="id" class="related-card" data-id="{{item.id}}" bindtap="goRelated">
+      <view class="r-thumb placeholder-img">
+        <text class="video-duration">{{item.duration}}</text>
+      </view>
+      <view class="r-title">{{item.title}}</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,36 @@
+<view class="page" wx:if="{{info}}">
+  <view class="header">
+    <view class="avatar placeholder-img"></view>
+    <view class="info">
+      <view class="name">{{info.name}}</view>
+      <view class="meta">{{info.team}} · {{info.role}}</view>
+      <view class="row" style="margin-top:12rpx;">
+        <text class="tag tag-blue">KDA {{info.kda}}</text>
+        <text class="tag">MVP×{{info.mvp}}</text>
+        <text class="tag tag-green">{{info.championships}}冠</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="container">
+    <view class="section-title">本命英雄</view>
+    <view wx:for="{{heroes}}" wx:key="name" class="card">
+      <view class="between">
+        <text style="color:#fff;font-size:30rpx;font-weight:bold;">{{item.name}}</text>
+        <text class="tag tag-green">胜率 {{item.winRate}}%</text>
+      </view>
+      <view class="card-sub" style="margin-top:8rpx;">使用 {{item.count}} 场</view>
+    </view>
+  </view>
+
+  <view class="container">
+    <view class="section-title">精彩集锦</view>
+    <view wx:for="{{highlights}}" wx:key="id" class="card" data-id="{{item.id}}" bindtap="goVideo">
+      <view class="video-thumb placeholder-img">
+        <text class="video-duration">{{item.duration}}</text>
+        <view class="video-play">▶</view>
+      </view>
+      <view style="color:#fff;margin-top:14rpx;font-size:28rpx;">{{item.title}}</view>
+    </view>
+  </view>
+</view>

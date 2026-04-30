@@ -1,0 +1,30 @@
+<view class="page container" wx:if="{{analysis}}">
+  <view class="card">
+    <view class="card-title">核心打法逻辑</view>
+    <view class="card-sub" style="line-height:1.8;">{{analysis.coreLogic}}</view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">阶段节奏</view>
+    <view wx:for="{{analysis.timeline}}" wx:key="phase" class="phase">
+      <view class="ph-tag">{{item.phase}}</view>
+      <view class="ph-desc">{{item.desc}}</view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">关键技巧</view>
+    <view wx:for="{{analysis.keyTips}}" wx:key="*this" class="tip-row">
+      <text class="t-num">{{index+1}}</text>
+      <text class="t-text">{{item}}</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">英雄联动</view>
+    <view wx:for="{{analysis.synergy}}" wx:key="from" class="syn">
+      <view class="syn-line"><text class="from">{{item.from}}</text><text class="arrow">→</text><text class="to">{{item.to}}</text></view>
+      <text class="effect">{{item.effect}}</text>
+    </view>
+  </view>
+</view>

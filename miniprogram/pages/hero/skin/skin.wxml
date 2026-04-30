@@ -1,0 +1,18 @@
+<view class="page" wx:if="{{skins.length}}">
+  <view class="big-cover placeholder-img">
+    <view class="cover-mask"></view>
+    <view class="skin-info">
+      <view class="s-quality tag">{{skins[current].quality}}</view>
+      <view class="s-name">{{skins[current].name}}</view>
+      <view class="s-desc">{{skins[current].desc}}</view>
+    </view>
+  </view>
+  <scroll-view scroll-x class="thumbs">
+    <view wx:for="{{skins}}" wx:key="name"
+      class="thumb {{current===index?'active':''}}"
+      data-idx="{{index}}" bindtap="switchSkin">
+      <view class="t-img placeholder-img"></view>
+      <text class="t-name">{{item.name}}</text>
+    </view>
+  </scroll-view>
+</view>

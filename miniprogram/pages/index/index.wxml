@@ -1,0 +1,144 @@
+<view class="page">
+  <!-- 顶部搜索栏 -->
+  <view class="search-bar">
+    <view class="search-box">
+      <text class="search-icon">🔍</text>
+      <input class="search-input" placeholder="搜索英雄/装备/主播/赛事" placeholder-class="ph"
+        bindinput="onSearchInput" bindconfirm="onSearchConfirm" />
+    </view>
+  </view>
+
+  <!-- 轮播 -->
+  <swiper class="banner" indicator-dots autoplay circular interval="4500" indicator-color="rgba(255,255,255,.4)" indicator-active-color="#ffd66e">
+    <block wx:for="{{banners}}" wx:key="id">
+      <swiper-item>
+        <view class="banner-item" data-item="{{item}}" bindtap="goBanner">
+          <image class="banner-img placeholder-img" src="{{item.img}}" mode="aspectFill" />
+          <view class="banner-mask"></view>
+          <view class="banner-title">{{item.title}}</view>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <!-- 频道入口 -->
+  <view class="channels">
+    <view class="ch" bindtap="goKplList">
+      <view class="ch-icon ch-1">🏆</view>
+      <text>KPL赛事</text>
+    </view>
+    <view class="ch" bindtap="goStreamerList">
+      <view class="ch-icon ch-2">🎬</view>
+      <text>主播剪辑</text>
+    </view>
+    <view class="ch" bindtap="goHeroList">
+      <view class="ch-icon ch-3">⚔️</view>
+      <text>英雄百科</text>
+    </view>
+    <view class="ch" bindtap="goSquadList">
+      <view class="ch-icon ch-4">👥</view>
+      <text>五排套路</text>
+    </view>
+    <view class="ch" bindtap="goShopList">
+      <view class="ch-icon ch-5">🛡️</view>
+      <text>装备铭文</text>
+    </view>
+  </view>
+
+  <!-- 今日赛事 -->
+  <view class="container">
+    <view class="section-title">
+      今日赛事
+      <text class="section-more" bindtap="goKplList">全部 ›</text>
+    </view>
+    <view wx:for="{{kplMatches}}" wx:key="id" class="match-card" data-id="{{item.id}}" bindtap="goMatch">
+      <view class="match-stage">{{item.stage}} · {{item.date}}</view>
+      <view class="match-body">
+        <view class="match-team">
+          <view class="team-logo placeholder-img"></view>
+          <text class="team-name">{{item.teamA}}</text>
+        </view>
+        <view class="match-vs">
+          <text wx:if="{{item.score}}" class="match-score">{{item.score}}</text>
+          <text wx:else class="match-vs-text">VS</text>
+          <text class="match-status">{{item.status}}</text>
+        </view>
+        <view class="match-team">
+          <view class="team-logo placeholder-img"></view>
+          <text class="team-name">{{item.teamB}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 主播精彩 -->
+  <view class="container">
+    <view class="section-title">
+      主播精彩剪辑
+      <text class="section-more" bindtap="goStreamerList">全部 ›</text>
+    </view>
+    <scroll-view scroll-x class="h-scroll">
+      <view wx:for="{{hotVideos}}" wx:key="id" class="video-card" data-id="{{item.id}}" bindtap="goVideo">
+        <view class="video-thumb placeholder-img">
+          <image src="{{item.cover}}" mode="aspectFill" style="width:100%;height:100%;border-radius:16rpx;" />
+          <text class="video-duration">{{item.duration||'02:30'}}</text>
+          <view class="video-play">▶</view>
+        </view>
+        <view class="video-title">{{item.title}}</view>
+        <view class="video-author">{{item.author}} · {{item.viewsText}}</view>
+      </view>
+      <view wx:if="{{!hotVideos.length}}" class="empty-tip">主播视频正在拉取中...</view>
+    </scroll-view>
+  </view>
+
+  <!-- 热门英雄 -->
+  <view class="container">
+    <view class="section-title">
+      热门英雄推荐
+      <text class="section-more" bindtap="goHeroList">全部 ›</text>
+    </view>
+    <scroll-view scroll-x class="h-scroll">
+      <view wx:for="{{hotHeroes}}" wx:key="id" class="hero-card" data-id="{{item.id}}" bindtap="goHero">
+        <image class="placeholder-img" src="{{item.avatar}}" mode="aspectFill" />
+        <view class="hero-name">{{item.name}}</view>
+        <view class="hero-role">{{item.role}}</view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 五排套路 -->
+  <view class="container">
+    <view class="section-title">
+      T0 五排上分套路
+      <text class="section-more" bindtap="goSquadList">全部 ›</text>
+    </view>
+    <view wx:for="{{hotSquads}}" wx:key="id" class="card squad-card" data-id="{{item.id}}" bindtap="goSquad">
+      <view class="between">
+        <view class="card-title">{{item.name}}</view>
+        <text class="tag {{item.level==='T0'?'tag-red':'tag-blue'}}">{{item.level}}</text>
+      </view>
+      <view class="row" style="margin-top:12rpx;flex-wrap:wrap;">
+        <text wx:for="{{item.heroes}}" wx:for-item="h" wx:key="*this" class="tag">{{h}}</text>
+      </view>
+      <view class="card-sub" style="margin-top:12rpx;">胜率 {{item.winRate}}% · 点击查看完整教学</view>
+    </view>
+  </view>
+
+  <!-- 铭文搭配 -->
+  <view class="container">
+    <view class="section-title">
+      热门铭文搭配
+      <text class="section-more" bindtap="goShopList">全部 ›</text>
+    </view>
+    <view wx:for="{{hotCombos}}" wx:key="id" class="card combo-card" data-id="{{item.id}}" bindtap="goCombo">
+      <view class="card-title">{{item.name}}</view>
+      <view wx:for="{{item.runes}}" wx:for-item="r" wx:key="*this" class="combo-rune">{{r}}</view>
+      <view class="card-sub" style="margin-top:8rpx;">适用：{{item.applyTo}}</view>
+    </view>
+  </view>
+
+  <view class="footer-tip">
+    <text wx:if="{{lastSync}}">数据最后同步：{{lastSync}}</text>
+    <text wx:else>由云函数每日自动同步官方数据</text>
+  </view>
+</view>

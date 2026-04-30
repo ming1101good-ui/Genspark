@@ -1,0 +1,23 @@
+.cover { width: 100%; height: 480rpx; position: relative; }
+.cover-mask { position: absolute; inset: 0; background: linear-gradient(to top, #0b1530 0%, transparent 60%); }
+.hero-info { position: absolute; left: 24rpx; bottom: 24rpx; right: 24rpx; }
+.h-name { color: #fff; font-size: 56rpx; font-weight: bold; }
+.h-title { color: #ffd66e; font-size: 28rpx; margin-top: 4rpx; }
+
+.stat-row { display: flex; align-items: center; margin: 14rpx 0; color: #cdd5e3; font-size: 26rpx; }
+.stat-row text:first-child { width: 80rpx; }
+.bar { flex: 1; height: 16rpx; background: rgba(255,255,255,0.08); border-radius: 8rpx; margin: 0 16rpx; overflow: hidden; }
+.bar-fill { height: 100%; background: linear-gradient(90deg, #ffd66e, #f6a23a); border-radius: 8rpx; }
+.bar-val { color: #ffd66e; width: 50rpx; text-align: right; }
+
+.entry-row { display: flex; justify-content: space-between; margin-bottom: 24rpx; }
+.entry { flex: 1; background: rgba(255,255,255,0.05); border-radius: 16rpx; padding: 24rpx 0; margin: 0 8rpx; display: flex; flex-direction: column; align-items: center; color: #fff; font-size: 26rpx; }
+.e-icon { width: 80rpx; height: 80rpx; border-radius: 20rpx; display: flex; align-items: center; justify-content: center; font-size: 38rpx; margin-bottom: 12rpx; }
+.e-num { color: #8a93a6; font-size: 22rpx; margin-top: 4rpx; }
+
+.tabs-mini { display: flex; margin: 16rpx 0; }
+.tab-mini { padding: 14rpx 28rpx; margin-right: 12rpx; border-radius: 32rpx; background: rgba(255,255,255,0.05); color: #cdd5e3; font-size: 26rpx; }
+.tab-mini.active { background: rgba(255,214,110,0.2); color: #ffd66e; font-weight: bold; }
+
+.skill-card .skill-icon { width: 96rpx; height: 96rpx; border-radius: 50%; flex-shrink: 0; }
+.skill-name { color: #fff; font-size: 30rpx; font-weight: bold; }

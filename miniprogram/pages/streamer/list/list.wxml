@@ -1,0 +1,34 @@
+<view class="page">
+  <view class="container">
+    <view class="section-title">人气主播</view>
+    <scroll-view scroll-x class="h-scroll">
+      <view wx:for="{{streamers}}" wx:key="id" class="streamer-card" data-id="{{item.id}}" bindtap="goStreamer">
+        <view class="avatar placeholder-img"></view>
+        <view class="s-name">{{item.name}}</view>
+        <view class="s-platform">{{item.platform}}</view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="tabs">
+    <view class="tab {{tab==='hot'?'active':''}}" data-tab="hot" bindtap="switchTab">热门精选</view>
+    <view class="tab {{tab==='new'?'active':''}}" data-tab="new" bindtap="switchTab">最新上架</view>
+    <view class="tab {{tab==='follow'?'active':''}}" data-tab="follow" bindtap="switchTab">单杀集锦</view>
+  </view>
+
+  <view class="container">
+    <view wx:for="{{videos}}" wx:key="id" class="video-list-card" data-id="{{item.id}}" bindtap="goVideo">
+      <view class="vlc-thumb placeholder-img">
+        <image src="{{item.cover}}" mode="aspectFill" style="width:100%;height:100%;border-radius:16rpx;" />
+        <text class="video-duration">{{item.duration}}</text>
+        <view class="video-play">▶</view>
+      </view>
+      <view class="vlc-body">
+        <view class="vlc-title">{{item.title}}</view>
+        <view class="vlc-author">{{item.author}} · {{item.platform}}</view>
+        <view class="vlc-views">▶ {{item.viewsText}}</view>
+      </view>
+    </view>
+    <view wx:if="{{!videos.length}}" class="empty">视频拉取中...</view>
+  </view>
+</view>

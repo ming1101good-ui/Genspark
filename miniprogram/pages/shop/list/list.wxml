@@ -1,0 +1,55 @@
+<view class="page">
+  <view class="tabs">
+    <view class="tab {{tab==='item'?'active':''}}" data-tab="item" bindtap="switchTab">装备</view>
+    <view class="tab {{tab==='rune'?'active':''}}" data-tab="rune" bindtap="switchTab">铭文</view>
+    <view class="tab {{tab==='combo'?'active':''}}" data-tab="combo" bindtap="switchTab">搭配玩法</view>
+  </view>
+
+  <!-- 装备 -->
+  <block wx:if="{{tab==='item'}}">
+    <scroll-view scroll-x class="cat-bar">
+      <view wx:for="{{itemCats}}" wx:key="*this"
+        class="cat {{itemCat===item?'active':''}}"
+        data-cat="{{item}}" bindtap="selectItemCat">{{item}}</view>
+    </scroll-view>
+    <view class="container">
+      <view class="grid">
+        <view wx:for="{{filteredItems}}" wx:key="id" class="g-item" data-id="{{item.id}}" bindtap="goItem">
+          <view class="g-icon placeholder-img"></view>
+          <view class="g-name">{{item.name}}</view>
+          <view class="g-price">{{item.price}}</view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <!-- 铭文 -->
+  <block wx:if="{{tab==='rune'}}">
+    <scroll-view scroll-x class="cat-bar">
+      <view wx:for="{{runeColors}}" wx:key="*this"
+        class="cat {{runeColor===item?'active':''}}"
+        data-color="{{item}}" bindtap="selectRuneColor">{{item}}</view>
+    </scroll-view>
+    <view class="container">
+      <view wx:for="{{filteredRunes}}" wx:key="id" class="rune-row" data-id="{{item.id}}" bindtap="goRune">
+        <view class="r-icon placeholder-img r-{{item.color}}"></view>
+        <view style="flex:1;">
+          <view class="r-name">{{item.name}}</view>
+          <view class="r-desc">{{item.desc}}</view>
+        </view>
+        <text class="r-tag tag {{item.color==='红色'?'tag-red':(item.color==='蓝色'?'tag-blue':'tag-green')}}">{{item.color}}</text>
+      </view>
+    </view>
+  </block>
+
+  <!-- 搭配 -->
+  <block wx:if="{{tab==='combo'}}">
+    <view class="container">
+      <view wx:for="{{combos}}" wx:key="id" class="card combo-c" data-id="{{item.id}}" bindtap="goCombo">
+        <view class="card-title">{{item.name}}</view>
+        <view wx:for="{{item.runes}}" wx:for-item="r" wx:key="*this" class="combo-rune">{{r}}</view>
+        <view class="card-sub" style="margin-top:10rpx;">适用：{{item.applyTo}}</view>
+      </view>
+    </view>
+  </block>
+</view>

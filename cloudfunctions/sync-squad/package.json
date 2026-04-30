@@ -1,0 +1,10 @@
+{
+  "name": "sync-squad",
+  "version": "1.0.0",
+  "description": "AI解析B站五排套路视频生成阵容数据",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3",
+    "axios": "^1.6.0"
+  }
+}

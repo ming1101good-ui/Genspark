@@ -1,0 +1,30 @@
+<view class="page" wx:if="{{info}}">
+  <view class="header">
+    <view class="avatar placeholder-img"></view>
+    <view class="info">
+      <view class="name">{{info.name}}</view>
+      <view class="meta">{{info.platform}} · {{info.fans}}粉丝</view>
+      <view class="row" style="margin-top:12rpx;flex-wrap:wrap;">
+        <text wx:for="{{info.tags}}" wx:for-item="t" wx:key="*this" class="tag">{{t}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="desc">{{info.desc}}</view>
+
+  <view class="container">
+    <view class="section-title">
+      最新视频
+      <text class="section-more" bindtap="goVideoList">查看全部 ›</text>
+    </view>
+    <view wx:for="{{videos}}" wx:key="id" class="video-list-card" data-id="{{item.id}}" bindtap="goVideo">
+      <view class="vlc-thumb placeholder-img">
+        <text class="video-duration">{{item.duration}}</text>
+        <view class="video-play">▶</view>
+      </view>
+      <view class="vlc-body">
+        <view class="vlc-title">{{item.title}}</view>
+        <view class="vlc-views">▶ {{item.viewsText}}</view>
+      </view>
+    </view>
+  </view>
+</view>

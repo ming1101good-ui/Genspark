@@ -1,0 +1,26 @@
+.hero-bg {
+  background: linear-gradient(135deg, #1a2547 0%, #2a3a6b 100%);
+  padding: 36rpx 24rpx; text-align: center;
+}
+.stage { color: #ffd66e; font-size: 26rpx; }
+.date { color: #8a93a6; font-size: 24rpx; margin-top: 6rpx; }
+.vs-wrap { display: flex; align-items: center; justify-content: space-between; margin-top: 28rpx; }
+.vs-team { flex: 1; display: flex; flex-direction: column; align-items: center; }
+.vs-logo { width: 120rpx; height: 120rpx; border-radius: 50%; }
+.vs-name { color: #fff; font-size: 28rpx; margin-top: 12rpx; }
+.vs-score { color: #ffd66e; font-size: 60rpx; font-weight: bold; padding: 0 24rpx; }
+.mvp { display: inline-block; margin-top: 24rpx; padding: 10rpx 28rpx; border-radius: 32rpx; background: rgba(255,214,110,0.18); color: #ffd66e; font-size: 26rpx; }
+
+.tabs { display: flex; padding: 0 24rpx; border-bottom: 1rpx solid rgba(255,255,255,0.06); }
+.tab { padding: 20rpx 24rpx; color: #8a93a6; font-size: 28rpx; position: relative; margin-right: 16rpx; }
+.tab.active { color: #ffd66e; font-weight: bold; }
+.tab.active::after { content: ''; position: absolute; left: 24rpx; right: 24rpx; bottom: 0; height: 4rpx; background: #ffd66e; border-radius: 2rpx; }
+
+.game-card { background: rgba(255,255,255,0.05); border-radius: 16rpx; padding: 24rpx; margin-bottom: 16rpx; }
+.game-idx { color: #fff; font-weight: bold; }
+.game-stat { color: #cdd5e3; font-size: 26rpx; margin-right: 24rpx; }
+.link { color: #5eaaff; font-size: 26rpx; }
+
+.data-row { display: flex; justify-content: space-between; padding: 12rpx 0; color: #cdd5e3; font-size: 26rpx; border-bottom: 1rpx solid rgba(255,255,255,0.06); }
+.data-row:last-child { border: 0; }
+.data-row .val { color: #ffd66e; }

@@ -1,0 +1,76 @@
+<view class="page" wx:if="{{info}}">
+  <view class="cover placeholder-img">
+    <view class="cover-mask"></view>
+    <view class="hero-info">
+      <view class="h-name">{{info.name}}</view>
+      <view class="h-title">{{info.title}}</view>
+      <view class="row" style="margin-top:14rpx;">
+        <text class="tag">{{info.role}}</text>
+        <text wx:for="{{info.tags}}" wx:for-item="t" wx:key="*this" class="tag tag-blue">{{t}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 属性 -->
+  <view class="container">
+    <view class="card">
+      <view class="card-title">英雄属性</view>
+      <view class="stat-row"><text>生存</text><view class="bar"><view class="bar-fill" style="width:{{info.stats.hp}}%"></view></view><text class="bar-val">{{info.stats.hp}}</text></view>
+      <view class="stat-row"><text>攻击</text><view class="bar"><view class="bar-fill" style="width:{{info.stats.attack}}%"></view></view><text class="bar-val">{{info.stats.attack}}</text></view>
+      <view class="stat-row"><text>技能</text><view class="bar"><view class="bar-fill" style="width:{{info.stats.skill}}%"></view></view><text class="bar-val">{{info.stats.skill}}</text></view>
+      <view class="stat-row"><text>难度</text><view class="bar"><view class="bar-fill" style="width:{{info.stats.difficulty}}%"></view></view><text class="bar-val">{{info.stats.difficulty}}</text></view>
+    </view>
+
+    <!-- 入口 -->
+    <view class="entry-row">
+      <view class="entry" bindtap="goBuild">
+        <view class="e-icon" style="background:rgba(255,107,107,.15);color:#ff6b6b;">⚔️</view>
+        <text>出装推荐</text>
+        <text class="e-num">{{info.recBuilds}}套</text>
+      </view>
+      <view class="entry" bindtap="goSkin">
+        <view class="e-icon" style="background:rgba(192,148,255,.15);color:#c094ff;">✨</view>
+        <text>皮肤展示</text>
+        <text class="e-num">{{info.recSkins}}款</text>
+      </view>
+      <view class="entry" bindtap="goHighlight">
+        <view class="e-icon" style="background:rgba(95,217,167,.15);color:#5fd9a7;">🎬</view>
+        <text>单杀剪辑</text>
+        <text class="e-num">{{info.highlightCount}}个</text>
+      </view>
+    </view>
+
+    <!-- 简介 -->
+    <view class="card">
+      <view class="card-title">英雄简介</view>
+      <view class="card-sub" style="line-height:1.8;">{{info.intro}}</view>
+    </view>
+
+    <!-- 技能 -->
+    <view class="tabs-mini">
+      <view class="tab-mini {{tab==='skill'?'active':''}}" data-tab="skill" bindtap="switchTab">技能</view>
+      <view class="tab-mini {{tab==='story'?'active':''}}" data-tab="story" bindtap="switchTab">背景</view>
+    </view>
+
+    <block wx:if="{{tab==='skill'}}">
+      <view wx:for="{{info.skills}}" wx:key="idx" class="card skill-card">
+        <view class="row">
+          <view class="skill-icon placeholder-img"></view>
+          <view style="flex:1;margin-left:16rpx;">
+            <view class="row between">
+              <text class="skill-name">{{item.name}}</text>
+              <text class="tag">{{item.idx}}</text>
+            </view>
+            <view class="card-sub" style="margin-top:8rpx;line-height:1.7;">{{item.desc}}</view>
+          </view>
+        </view>
+      </view>
+    </block>
+
+    <block wx:if="{{tab==='story'}}">
+      <view class="card">
+        <view class="card-sub" style="line-height:2;">{{info.story}}</view>
+      </view>
+    </block>
+  </view>
+</view>

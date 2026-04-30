@@ -1,0 +1,70 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/kpl/list/list",
+    "pages/kpl/match/match",
+    "pages/kpl/team/team",
+    "pages/kpl/player/player",
+    "pages/kpl/replay/replay",
+    "pages/streamer/list/list",
+    "pages/streamer/detail/detail",
+    "pages/streamer/video/video",
+    "pages/streamer/player/player",
+    "pages/hero/list/list",
+    "pages/hero/detail/detail",
+    "pages/hero/build/build",
+    "pages/hero/skin/skin",
+    "pages/hero/highlight/highlight",
+    "pages/squad/list/list",
+    "pages/squad/detail/detail",
+    "pages/squad/lineup/lineup",
+    "pages/squad/tutorial/tutorial",
+    "pages/shop/list/list",
+    "pages/shop/item/item",
+    "pages/shop/rune/rune",
+    "pages/shop/combo/combo"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#0b1530",
+    "navigationBarTitleText": "峡谷开黑助手",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#0b1530",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#8a93a6",
+    "selectedColor": "#ffd66e",
+    "backgroundColor": "#0b1530",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/tab_home.png",
+        "selectedIconPath": "images/tab_home_a.png"
+      },
+      {
+        "pagePath": "pages/hero/list/list",
+        "text": "英雄",
+        "iconPath": "images/tab_hero.png",
+        "selectedIconPath": "images/tab_hero_a.png"
+      },
+      {
+        "pagePath": "pages/squad/list/list",
+        "text": "五排",
+        "iconPath": "images/tab_squad.png",
+        "selectedIconPath": "images/tab_squad_a.png"
+      },
+      {
+        "pagePath": "pages/shop/list/list",
+        "text": "商城",
+        "iconPath": "images/tab_shop.png",
+        "selectedIconPath": "images/tab_shop_a.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

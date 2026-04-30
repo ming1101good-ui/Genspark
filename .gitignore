@@ -1,7 +1,23 @@
+# 依赖
 node_modules/
-private.key
+package-lock.json
+
+# 微信 CI 私钥（绝不能提交！）
+scripts/private.key
+*.key
+
+# 二维码与日志
+scripts/preview.jpg
 *.log
-.DS_Store
-preview-qr.jpg
+
+# 编辑器
 .vscode/
+.idea/
+.DS_Store
+
+# 云函数本地上传产物
 miniprogram_npm/
+
+# 临时
+*.tmp
+*.bak

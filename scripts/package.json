@@ -1,0 +1,12 @@
+{
+  "name": "xiagu-helper-ci",
+  "version": "1.0.0",
+  "description": "微信小程序自动上传脚本",
+  "scripts": {
+    "upload": "node upload.js",
+    "preview": "node preview.js"
+  },
+  "dependencies": {
+    "miniprogram-ci": "^1.9.11"
+  }
+}

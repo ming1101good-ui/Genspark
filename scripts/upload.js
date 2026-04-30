@@ -1,40 +1,42 @@
-// 上传到微信开发版（用 miniprogram-ci）
-// 用法：npm run upload [-- --version 1.0.0 --desc 描述]
+// 自动上传到微信小程序「开发版」
+// 用法：
+//   1. 登录 mp.weixin.qq.com → 开发管理 → 开发设置 → 小程序代码上传 → 下载并保存「上传密钥（私钥）」到 scripts/private.key
+//   2. 在 mp.weixin.qq.com 添加 IP 白名单（运行此脚本的 IP）
+//   3. 运行 node scripts/upload.js
+//
+// 注意：private.key 不要提交到 git（已加到 .gitignore）
 const ci = require('miniprogram-ci');
 const path = require('path');
 const fs = require('fs');
 
 const APPID = 'wx0537c638f83f3275';
-
-const args = process.argv.slice(2);
-const getArg = (k, d) => {
-  const i = args.indexOf('--' + k);
-  return i >= 0 ? args[i + 1] : d;
-};
-
-const version = getArg('version', '1.0.0');
-const desc = getArg('desc', '峡谷开黑助手 自动上传 ' + new Date().toISOString().slice(0, 16));
+const PROJECT_PATH = path.resolve(__dirname, '..');
+const KEY_PATH = path.resolve(__dirname, 'private.key');
 
 (async () => {
-  const keyPath = path.resolve(__dirname, '../private.key');
-  if (!fs.existsSync(keyPath)) {
-    console.error('❌ 缺少 private.key 文件！');
-    console.error('请先去 mp.weixin.qq.com → 开发管理 → 开发设置 → 小程序代码上传');
-    console.error('生成密钥并下载，保存到项目根目录命名为 private.key');
+  if (!fs.existsSync(KEY_PATH)) {
+    console.error('❌ 未找到 scripts/private.key');
+    console.error('请在 mp.weixin.qq.com → 开发管理 → 开发设置 → 「小程序代码上传」生成并下载密钥到此路径');
     process.exit(1);
   }
+
+  const pkg = require(path.resolve(PROJECT_PATH, 'miniprogram/app.json'));
+  const version = process.env.VERSION || readVersion();
+  const desc = process.env.DESC || `自动上传 ${new Date().toISOString().slice(0, 16)}`;
 
   const project = new ci.Project({
     appid: APPID,
     type: 'miniProgram',
-    projectPath: path.resolve(__dirname, '..'),
-    privateKeyPath: keyPath,
-    ignores: ['node_modules/**/*', 'scripts/**/*', 'private.key', '.git/**/*', '*.log', 'README.md']
+    projectPath: PROJECT_PATH,
+    privateKeyPath: KEY_PATH,
+    ignores: ['node_modules/**/*', 'scripts/**/*', '.git/**/*']
   });
 
-  console.log(`🚀 开始上传  版本：${version}  描述：${desc}`);
+  console.log('开始上传到微信...');
+  console.log('版本号:', version);
+  console.log('备注:', desc);
 
-  const uploadResult = await ci.upload({
+  const result = await ci.upload({
     project,
     version,
     desc,
@@ -42,24 +44,30 @@ const desc = getArg('desc', '峡谷开黑助手 自动上传 ' + new Date().toIS
       es6: true,
       es7: true,
       minify: true,
-      codeProtect: false,
       autoPrefixWXSS: true
     },
-    onProgressUpdate: console.log
+    onProgressUpdate: (info) => {
+      if (info && info.message) console.log(' ›', info.message);
+    }
   });
 
-  console.log('\n✅ 上传成功！');
-  console.log(`📊 包大小：${(uploadResult.subPackageInfo[0].size / 1024).toFixed(1)} KB`);
-  console.log('\n📱 下一步操作（你需要扫码点 1 下）：');
-  console.log('1. 打开 https://mp.weixin.qq.com');
-  console.log('2. 进入"管理 → 版本管理 → 开发版本"');
-  console.log('3. 找到刚上传的版本 → 点击"提交审核"');
-  console.log('4. 填写审核信息（类目建议：工具→效率工具）→ 人脸识别确认');
-  console.log('5. 等待 1-3 个工作日审核结果');
+  console.log('✅ 上传完成');
+  console.log(JSON.stringify(result, null, 2));
+  console.log('');
+  console.log('==========================================');
+  console.log('  下一步（约 10 秒）：');
+  console.log('  1. 用微信扫码登录 mp.weixin.qq.com');
+  console.log('  2. 点击 [版本管理] → [开发版] → 找到刚上传的版本');
+  console.log('  3. 点击「提交审核」按钮');
+  console.log('==========================================');
 })().catch(e => {
-  console.error('❌ 上传失败：', e.message || e);
-  if (e.errCode === -10008) {
-    console.error('提示：请把当前机器的出口 IP 加到 mp.weixin.qq.com → 开发管理 → 开发设置 → "小程序代码上传"白名单');
-  }
+  console.error('❌ 上传失败:', e);
   process.exit(1);
 });
+
+function readVersion() {
+  // 自动版本号：1.0.YYYYMMDDHHmm
+  const d = new Date();
+  const pad = n => (n < 10 ? '0' + n : '' + n);
+  return `1.0.${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}`;
+}

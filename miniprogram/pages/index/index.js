@@ -59,7 +59,7 @@ Page({
   },
   onSearchConfirm() {
     if (!this.data.keyword.trim()) return;
-    util.toast('搜索功能即将上线');
+    util.nav(`/pages/search/search?keyword=${encodeURIComponent(this.data.keyword.trim())}`);
   },
 
   // 跳转

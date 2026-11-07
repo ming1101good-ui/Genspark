@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/search/search",
     "pages/kpl/list/list",
     "pages/kpl/match/match",
     "pages/kpl/team/team",

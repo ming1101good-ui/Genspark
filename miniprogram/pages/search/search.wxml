@@ -1,0 +1,72 @@
+<view class="page">
+  <view class="search-bar">
+    <view class="search-box">
+      <text class="search-icon">🔍</text>
+      <input class="search-input" value="{{keyword}}" placeholder="搜索英雄/装备/视频/赛事" placeholder-class="ph" bindinput="onSearchInput" bindconfirm="onSearchConfirm" confirm-type="search" />
+    </view>
+  </view>
+
+  <view wx:if="{{loading}}" class="loading">加载中...</view>
+
+  <block wx:if="{{!loading}}">
+    <!-- 英雄 -->
+    <view wx:if="{{heroes.length > 0}}" class="container">
+      <view class="section-title">相关英雄</view>
+      <scroll-view scroll-x class="h-scroll">
+        <view wx:for="{{heroes}}" wx:key="id" class="hero-card" data-id="{{item._id}}" bindtap="goHero">
+          <image class="placeholder-img" src="{{item.avatar}}" mode="aspectFill" />
+          <view class="hero-name">{{item.name}}</view>
+          <view class="hero-role">{{item.role}}</view>
+        </view>
+      </scroll-view>
+    </view>
+
+    <!-- 装备 -->
+    <view wx:if="{{items.length > 0}}" class="container">
+      <view class="section-title">相关装备</view>
+      <scroll-view scroll-x class="h-scroll">
+        <view wx:for="{{items}}" wx:key="id" class="item-card" data-id="{{item._id}}" bindtap="goItem">
+          <image class="placeholder-img" src="{{item.icon}}" mode="aspectFill" style="width:100rpx;height:100rpx;border-radius:12rpx;"/>
+          <view class="item-name">{{item.name}}</view>
+          <view class="item-price">🪙 {{item.price}}</view>
+        </view>
+      </scroll-view>
+    </view>
+
+    <!-- 视频 -->
+    <view wx:if="{{videos.length > 0}}" class="container">
+      <view class="section-title">相关视频</view>
+      <scroll-view scroll-x class="h-scroll">
+        <view wx:for="{{videos}}" wx:key="id" class="video-card" data-id="{{item._id}}" bindtap="goVideo">
+          <view class="video-thumb placeholder-img">
+            <image src="{{item.cover}}" mode="aspectFill" style="width:100%;height:100%;border-radius:16rpx;" />
+            <text class="video-duration">{{item.duration||'02:30'}}</text>
+            <view class="video-play">▶</view>
+          </view>
+          <view class="video-title">{{item.title}}</view>
+          <view class="video-author">{{item.author}} · {{item.viewsText}}</view>
+        </view>
+      </scroll-view>
+    </view>
+
+    <!-- 五排套路 -->
+    <view wx:if="{{squads.length > 0}}" class="container">
+      <view class="section-title">相关套路</view>
+      <view wx:for="{{squads}}" wx:key="id" class="card squad-card" data-id="{{item._id}}" bindtap="goSquad">
+        <view class="between">
+          <view class="card-title">{{item.name}}</view>
+          <text class="tag {{item.level==='T0'?'tag-red':'tag-blue'}}">{{item.level}}</text>
+        </view>
+        <view class="row" style="margin-top:12rpx;flex-wrap:wrap;">
+          <text wx:for="{{item.heroes}}" wx:for-item="h" wx:key="*this" class="tag">{{h}}</text>
+        </view>
+        <view class="card-sub" style="margin-top:12rpx;">胜率 {{item.winRate}}%</view>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view wx:if="{{heroes.length === 0 && items.length === 0 && videos.length === 0 && squads.length === 0}}" class="empty">
+      暂无搜索结果
+    </view>
+  </block>
+</view>
